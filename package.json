@@ -18,6 +18,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "color": "^1.0.3",
     "lodash-es": "^4.17.4",
     "vue": "^2.2.6",
     "vue-touch": "^2.0.0-beta.4",

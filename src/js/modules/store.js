@@ -8,7 +8,8 @@ const store = new Vuex.Store({
 	state: {
 		grid: {
 			items: config.dummy,
-			spacer: config.spacer
+			spacer: config.spacer,
+			colors: ['#0272a4', '#004052', '#013743', '#ff8d09', '#ec540b', '#fbe8a4', '#f5eab2']
 		}
 	},
 	mutations: {

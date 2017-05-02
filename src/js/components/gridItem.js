@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Color from 'color';
 
 function randomClass(classes) {
 	if(Math.random() > .5) {
@@ -13,10 +14,17 @@ Vue.component('grid-item', {
     	thisClass() {
     		const classNames = ['1x2', '2x2', '2x1', '1x3', '2x3', '3x3', '3x2', '3x1'];
     		return `size--${ randomClass(classNames) }`;
+    	},
+    	backgroundColor() {
+    		const colors = this.$store.state.grid.colors;
+    		return colors[Math.floor(Math.random() * colors.length)];
+    	},
+    	foregroundColor() {
+    		return Color(this.backgroundColor).light() ? '#000000' : '#ffffff';
     	}
     },
     template: `
-        <section class="grid-item" :class="thisClass">
+        <section class="grid-item" :class="thisClass" :style="{ backgroundColor: backgroundColor, color: foregroundColor }">
             <span class="grid-item__title" v-if="item.message">{{ item.message }}</span>
         </section>
     `
