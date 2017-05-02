@@ -6,7 +6,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
-		
+		grid: {
+			items: config.dummy,
+			spacer: config.spacer
+		}
 	},
 	mutations: {
 		

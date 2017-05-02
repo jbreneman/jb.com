@@ -1,0 +1,8 @@
+@import 'grid-item';
+@import 'grid-spacer';
+
+.grid {
+	display: grid;
+	grid-template: repeat(12, 1fr) / repeat(7, 1fr);
+	grid-auto-flow: row dense;
+}

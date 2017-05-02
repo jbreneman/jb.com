@@ -1,0 +1,17 @@
+.grid-spacer {
+	&.size--1x3 {
+		grid-column: 1 / span 3;
+		grid-row: 2;
+	}
+
+	&.size--4x4 {
+		padding-bottom: 100%;
+		grid-column: 1 / span 4;
+		grid-row: 3 / span 4;
+	}
+
+	&.size--2x1 {
+		grid-column: 5;
+		grid-row: 5 / span 2;
+	}
+}

@@ -1,0 +1,43 @@
+.grid-item {
+	background-color: green;
+	
+	&.size--2x1 {
+		grid-column: span 2;
+	}
+
+	&.size--1x2 {
+		grid-row: span 2;
+		grid-column: span 1;
+	}
+
+	&.size--2x2 {
+		grid-row: span 2;
+		grid-column: span 2;
+	}
+
+
+	&.size--1x3 {
+		grid-row: span 1;
+		grid-column: span 3;
+	}
+
+	&.size--2x3 {
+		grid-row: span 2;
+		grid-column: span 3;
+	}
+
+	&.size--3x3 {
+		grid-row: span 3;
+		grid-column: span 3;
+	}
+
+	&.size--3x1 {
+		grid-row: span 3;
+		grid-column: span 1;
+	}
+
+	&.size--3x2 {
+		grid-row: span 3;
+		grid-column: span 2;
+	}
+}
