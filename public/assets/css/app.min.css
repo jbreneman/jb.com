@@ -4,6 +4,12 @@
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'gladifilthefte';
+  src: url("../fonts/gladifilthefte-webfont.woff2") format("woff2"), url("../fonts/gladifilthefte-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -57,7 +63,13 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+body {
+  background-color: #f5eab2;
+  overflow-x: hidden; }
+
 .grid-item {
+  position: relative;
+  z-index: 0;
   padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -67,19 +79,43 @@ html {
           justify-content: flex-end;
   -webkit-box-align: end;
       -ms-flex-align: end;
-          align-items: flex-end; }
+          align-items: flex-end;
+  transition: z-index .12s ease-out, -webkit-transform .12s ease-out;
+  transition: transform .12s ease-out, z-index .12s ease-out;
+  transition: transform .12s ease-out, z-index .12s ease-out, -webkit-transform .12s ease-out;
+  text-decoration: none;
+  background-size: cover; }
+  .grid-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 12px rgba(1, 55, 67, 0.1);
+    opacity: 0;
+    transition: opacity .12s ease-out; }
+  .grid-item:hover {
+    z-index: 12;
+    -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05);
+    transition: -webkit-transform .12s ease-out;
+    transition: transform .12s ease-out;
+    transition: transform .12s ease-out, -webkit-transform .12s ease-out; }
+    .grid-item:hover::before {
+      opacity: 1; }
   .grid-item__title {
-    font-family: bazar, sans-serif;
+    font-family: gladifilthefte, sans-serif;
     font-size: 2rem;
     text-transform: uppercase; }
   .grid-item.size--2x1 {
+    -ms-grid-row: span 2;
+        grid-row: span 2; }
+  .grid-item.size--1x2 {
+    -ms-grid-row: span 1;
+        grid-row: span 1;
     -ms-grid-column: span 2;
         grid-column: span 2; }
-  .grid-item.size--1x2 {
-    -ms-grid-row: span 2;
-        grid-row: span 2;
-    -ms-grid-column: span 1;
-        grid-column: span 1; }
   .grid-item.size--2x2 {
     -ms-grid-row: span 2;
         grid-row: span 2;
@@ -110,6 +146,11 @@ html {
         grid-row: span 3;
     -ms-grid-column: span 2;
         grid-column: span 2; }
+  .grid-item.size--4x1 {
+    -ms-grid-row: span 4;
+        grid-row: span 4;
+    -ms-grid-column: span 1;
+        grid-column: span 1; }
 
 .grid-spacer.size--1x3 {
   -ms-grid-column-span: 3;
@@ -137,5 +178,7 @@ html {
 .grid {
   display: -ms-grid;
   display: grid;
-  grid-template: repeat(12, 1fr)/repeat(7, 1fr);
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
   grid-auto-flow: row dense; }

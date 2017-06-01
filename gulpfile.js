@@ -36,7 +36,10 @@ gulp.task('js', function(){
 
 gulp.task('default', ['sass', 'js'], function() {
 	browserSync.init({
-        server: "./public"
+		server: {
+			baseDir: './public'
+		},
+		injectChanges: true
     });
 
 	gulp.watch(dirs.src + 'css/**/*.scss', ['sass']);

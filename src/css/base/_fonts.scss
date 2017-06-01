@@ -6,4 +6,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'gladifilthefte';
+    src: url('../fonts/gladifilthefte-webfont.woff2') format('woff2'),
+         url('../fonts/gladifilthefte-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 $bazar: bazar, sans-serif;
+$glad: gladifilthefte, sans-serif;
