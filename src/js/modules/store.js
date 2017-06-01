@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import * as config from '../config';
 import Prismic from 'prismic.io';
-import 'array.prototype.fill';
 
 Vue.use(Vuex);
 
