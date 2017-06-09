@@ -7,3 +7,11 @@ $easing-medium: .24s;
 $easing-slow: .36s;
 
 $easing--default: $easing-medium ease-in;
+
+//
+// Easings
+//
+$break--large: 1280px;
+$break--medium: 960px;
+$break--small: 680px;
+$break--tiny: 420px;

@@ -3,7 +3,35 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(7, 14.29vw);
+	grid-template-columns: repeat(7, 14.29%);
 	grid-auto-rows: 14.29vw;
 	grid-auto-flow: row dense;
+}
+
+@media screen and (max-width: $break--large) {
+	.grid {
+		grid-template-columns: repeat(5, 20%);
+		grid-auto-rows: 20vw;
+	}
+}
+
+@media screen and (max-width: $break--medium) {
+	.grid {
+		grid-template-columns: repeat(3, 33.3%);
+		grid-auto-rows: 33.3vw;
+	}
+}
+
+@media screen and (max-width: $break--small) {
+	.grid {
+		grid-template-columns: repeat(2, 50%);
+		grid-auto-rows: 50vw;
+	}
+}
+
+@media screen and (max-width: $break--tiny) {
+	.grid {
+		grid-template-columns: 100%;
+		grid-auto-rows: 100vw;
+	}
 }
