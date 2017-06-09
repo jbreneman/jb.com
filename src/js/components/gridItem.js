@@ -12,14 +12,17 @@ Vue.component('grid-item', {
     props: ['item'],
     computed: {
     	thisClass() {
-    		const classNames = ['1x2', '2x2', '2x1', '1x3', '2x3', '3x3', '3x2', '3x1'];
-    		//const classNames = ['2x1', '3x1', '4x1'];
+    		//const classNames = ['1x2', '2x2', '2x1', '1x3', '2x3', '3x3', '3x2', '3x1'];
+    		const classNames = ['2x1', '3x1', '4x1'];
     		return `size--${ randomClass(classNames) }`;
     	},
     	backgroundColor() {
-    		const colors = this.$store.state.grid.colors;
-    		return colors[Math.floor(Math.random() * colors.length)];
+            const colors = this.$store.state.grid.colors;
+    		return colors[Math.floor(Math.random() * colors.length)]
     	},
+        backgroundGradient() {
+            return `linear-gradient(to bottom right, ${ this.backgroundColor } 0%, ${ Color(this.backgroundColor).darken(.1) } 100%)`;
+        },
     	foregroundColor() {
     		return Color(this.backgroundColor).light() ? '#000000' : '#ffffff';
     	},
@@ -39,7 +42,8 @@ Vue.component('grid-item', {
     	}
     },
     template: `
-        <a :href="url" @click.prevent="loadPage()" class="grid-item" :class="thisClass" :style="{ backgroundColor: backgroundColor, color: foregroundColor, 'background-image': image }">
+        <a :href="url" @click.prevent="loadPage()" class="grid-item" :class="thisClass" :style="{ backgroundImage: backgroundGradient, color: foregroundColor }">
+            <div class="grid-item__image" :style="{ 'background-image': image }"></div>
             <span class="grid-item__title" v-if="title">{{ title }}</span>
         </a>
     `

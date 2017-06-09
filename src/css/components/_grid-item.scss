@@ -1,44 +1,40 @@
 .grid-item {
 	position: relative;
 	z-index: 0;
-	padding: 1rem;
+	padding: .5rem;
 	display: flex;
-	justify-content: flex-end;
-	align-items: flex-end;
+	flex-direction: column;
 	transition: transform .12s ease-out, z-index .12s ease-out;
 	text-decoration: none;
-	background-size: cover;
 
-	&::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		box-shadow: 0 0 12px rgba(#013743, .1);
-		opacity: 0;
-		transition: opacity .12s ease-out;
+	&[href]:hover {
+		z-index: 12;
+		transform: scale(.95, .95);
+		transition: transform .12s ease-out;
 	}
 
-	&:hover {
-		z-index: 12;
-		transform: scale(1.05, 1.05);
-		transition: transform .12s ease-out;
-
-		&::before {
-			opacity: 1;
-		}
+	&__image {
+		width: 100%;
+		flex-grow: 1;
+		background-size: cover;
 	}
 
 	&__title {
-		font-family: $glad;
+		margin-top: .5rem;
+		width: 100%;
+		font-family: $bazar;
 		font-size: 2rem;
+		text-align: right;
 		text-transform: uppercase;
+		word-wrap: break-word;
 	}
 	
 	&.size--2x1 {
 		grid-row: span 2;
+
+		&[href]:hover {
+			transform: scale(.95, .975);
+		}
 	}
 
 	&.size--1x2 {
@@ -70,6 +66,10 @@
 	&.size--3x1 {
 		grid-row: span 3;
 		grid-column: span 1;
+
+		&[href]:hover {
+			transform: scale(.95, .9833);
+		}
 	}
 
 	&.size--3x2 {
@@ -80,5 +80,9 @@
 	&.size--4x1 {
 		grid-row: span 4;
 		grid-column: span 1;
+
+		&[href]:hover {
+			transform: scale(.95, .9875);
+		}
 	}
 }
