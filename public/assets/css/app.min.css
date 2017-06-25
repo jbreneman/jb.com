@@ -195,6 +195,13 @@ body {
         grid-template-columns: 100%;
     grid-auto-rows: 100vw; } }
 
+.article {
+  position: fixed;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background-color: white; }
+
 .site-footer {
   position: fixed;
   z-index: 1234;

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Color from 'color';
+import './article-container';
 
 function randomClass(classes) {
 	if(Math.random() > .6) {
@@ -37,14 +38,15 @@ Vue.component('grid-item', {
     	}
     },
     methods: {
-    	loadPage() {
-    		console.log('load page');
+    	loadPage(mutation) {
+    		this.$store.commit('changePage', { index: mutation });
     	}
     },
     template: `
-        <a :href="url" @click.prevent="loadPage()" class="grid-item" :class="thisClass" :style="{ backgroundImage: backgroundGradient, color: foregroundColor }">
+        <a :href="url" @click.prevent="loadPage(item.index)" class="grid-item" :class="thisClass" :style="{ backgroundImage: backgroundGradient, color: foregroundColor }">
             <div class="grid-item__image" :style="{ 'background-image': image }"></div>
             <span class="grid-item__title" v-if="title">{{ title }}</span>
+            <article-container :article="item"></article-container>
         </a>
     `
 });

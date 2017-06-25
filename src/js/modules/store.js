@@ -5,16 +5,26 @@ import Prismic from 'prismic.io';
 
 Vue.use(Vuex);
 
-const fill = { data: { 'post.title': { value: null } }, type: 'post' };
+const fill = { data: { 'post.title': { value: null } }, type: 'post', active: false };
 
 Prismic.api('https://jessebrenemancom.prismic.io/api').then(function(api) {
 	return api.query('', { pageSize : 20, page : 1 });
 }).then(function(res) {
+	let items;
 	if (res.results === 24) {
-		store.state.grid.items = res.results;
+		items = res.results.map((item, index) => {
+			item.active = false;
+			item.index = index;
+			return item;
+		});
 	} else {
-		store.state.grid.items = [...res.results, ...(new Array(24 - res.results.length).fill(fill))];
+		items = [...res.results, ...(new Array(24 - res.results.length).fill(fill))].map((item, index) => {
+			item.active = false;
+			item.index = index;
+			return item;
+		});
 	}
+	store.state.grid.items = items;
 	console.info(res.results);
 }, function(err) {
 	console.log('Something went wrong: ', err);
@@ -29,7 +39,9 @@ const store = new Vuex.Store({
 		}
 	},
 	mutations: {
-		
+		changePage: function(state, mutation) {
+			state.grid.items = state.grid.items.map(item => Object.assign({}, item, { active: mutation.index === item.index }));
+		}
 	}
 });
 
